@@ -1,65 +1,45 @@
+import 'babel-polyfill'
+
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-
-
-
-//Reducer
-import { combineReducers } from 'redux'
-
-const counter = function counter(state = 0, action) {
-  switch (action.type) {
-    case 'INCREMENT_COUNTER':
-      return state + 1
-    case 'DECREMENT_COUNTER':
-      return state - 1
-    default:
-      return state
-  }
-}
-
-const initialProjects = {
-  ipsec: {
-    name: 'ipsec',
-    owner: 'iffah'
-  }
-}
-
-const projects = function projects(state = initialProjects, action) {
-  return state
-}
-
-const reducer = combineReducers({
-  counter, projects
-})
-
-//DevTools
-
-import DevTools from './dev/DevTools'
-
-
-
-//Store
-import { createStore, applyMiddleware, compose } from 'redux'
-
-const initialState = null
-
-const createStoreWithMiddleware = compose(
-  DevTools.instrument()
-)(createStore)
-
-const store = createStoreWithMiddleware(reducer)
-
-
-//React Redux
 import { Provider } from 'react-redux'
 
+/* Start Store */
+import reducers from './reducers'
+import DevTools from './DevTools'
+import { createStore, applyMiddleware, compose } from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from './counter/sagas'
+
+// const createStoreWithMiddleware = compose(
+//   DevTools.instrument()
+// )(createStore)
+//
+// const store = createStoreWithMiddleware(reducers)
+
+
+const store = createStore(
+  reducers,
+  applyMiddleware(
+    createSagaMiddleware(rootSaga)
+  )
+)
+
+  // <DevTools store={store} />
+/* End Store */
+
+//React Redux
+import Projects from './project/container'
+import Counter from './counter/container'
 
 const Root = () => (
   <div>
   <Provider store={store} >
-    <div>lla</div>
+    <div>
+      <Counter />
+    </div>
   </Provider>
-  <DevTools store={store} />
+
   </div>
 )
 
