@@ -1,20 +1,7 @@
 import { takeEvery } from 'redux-saga'
 import { put, call } from 'redux-saga/effects'
 
-import Firebase from 'firebase'
-const ref = new Firebase('https://srd.firebaseio.com/')
-
-
-
-function callfb() {
-	return ref.child('projects').once('value').then(function(snapshot) {
-  // renderBlog(snapshot.val())
-	  // console.log(snapshot.val())
-	  return snapshot.val()
-	}, function(error) {
-	  console.error(error)
-	})
-}
+import { firebaseOnce } from '../../services/firebase'
 
 export function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms))
@@ -26,11 +13,11 @@ export function delay(ms) {
 // }
 
 export function* incrementAsync() {
-  const data = yield call(callfb)
+  const data = yield call(firebaseOnce)
   console.log(data)
   yield put({type: 'INCREMENT_COUNTER'})
 }
 
 export default function* rootSaga() {
-  yield* takeEvery('INCREMENT_ASYNC', incrementAsync)
+  yield* takeEvery('INCREMENT_ASYNC', incrementAsync) 
 }

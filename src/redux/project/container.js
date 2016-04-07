@@ -5,11 +5,10 @@ import { connect } from 'react-redux'
 class Projects extends Component {
   render() {
     const { projects } = this.props
-    console.log(projects)
-    // const lala =
+    const pp = JSON.stringify(projects)
     return (
       <div>
-        Projects baby
+        Projects baby {pp}
       </div>
     )
   }
