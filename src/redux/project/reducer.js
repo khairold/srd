@@ -6,5 +6,10 @@ const initialProjects = {
 }
 
 export default function projects(state = initialProjects, action) {
-  return state
+  switch (action.type) {
+    case 'LOAD_PROJECTS':
+      return {...state, ...action.projects }
+    default:
+      return state
+  }
 }

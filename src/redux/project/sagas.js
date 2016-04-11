@@ -13,12 +13,13 @@ export function delay(ms) {
 //   yield put({type: 'INCREMENT_COUNTER'})
 // }
 
-export function* incrementAsync() {
+
+
+export function* loadProjects() {
   const data = yield call(getProjectList)
-  console.log(data.toPlainObject())
-  yield put({type: 'INCREMENT_COUNTER'})
+  yield put({ type: 'LOAD_PROJECTS', projects: data })
 }
 
 export default function* rootSaga() {
-  yield* takeEvery('INCREMENT_ASYNC', incrementAsync)
+  yield* takeEvery('REQUEST_PROJECTS', loadProjects)
 }

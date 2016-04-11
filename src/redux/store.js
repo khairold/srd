@@ -11,7 +11,7 @@ const reducers = combineReducers({
 import DevTools from './DevTools'
 import { createStore, applyMiddleware, compose } from 'redux'
 import createSagaMiddleware from 'redux-saga'
-import rootSaga from './counter/sagas'
+import rootSaga from './project/sagas'
 
 export function configureStore(initialState) {
   const store = createStore(
