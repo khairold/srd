@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
-import { Router, Route, browserHistory } from 'react-router'
+import { Route } from 'react-router'
 
-import Projects from './redux/project/container'
+import ProjectsList from './redux/project/containerList'
+import ProjectSingle from './redux/project/containerSingle'
+
 import Counter from './redux/counter/container'
 
 export default () => (
-	<Router history={browserHistory}>
     <Route>
   		<Route path="/" component={Counter} />
-  		<Route path="/projects" component={Projects}/>
+  		<Route path="/projects" component={ProjectsList}/>
+			<Route path="/projects/:projectId" component={ProjectSingle}/>
   	</Route>
-	</Router>
 )

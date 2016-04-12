@@ -11,7 +11,8 @@ const client = contentful.createClient({
 function cleanProjects(data) {
   let cleanedProjects = {}
   data.items.map( project => {
-    const id = project.sys.id
+    // const id = project.sys.id
+    const id = project.fields.slug
     cleanedProjects[id] = {id, ...project.fields}
     if (project.fields.systemOwner) {
       cleanedProjects[id].systemOwner = {id: cleanedProjects[id].systemOwner.sys.id,  ...cleanedProjects[id].systemOwner.fields}
@@ -23,7 +24,7 @@ function cleanProjects(data) {
 export function getProjectList() {
   return client.getEntries({content_type: 'projects'})
 	.then(function (data) {
-    console.log(data)
+    // console.log(data)
     return cleanProjects(data)
 	})
 }

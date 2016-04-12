@@ -1,10 +1,12 @@
 //Reducer
 import { combineReducers } from 'redux'
+import { routerReducer } from 'react-router-redux'
+
 import counter from './counter/reducer'
 import projects from './project/reducer'
 
 const reducers = combineReducers({
-  counter, projects
+  counter, projects, routing: routerReducer
 })
 
 /* Start Store */

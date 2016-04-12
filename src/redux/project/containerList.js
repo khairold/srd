@@ -5,18 +5,18 @@ import * as ProjectActions from './actions'
 
 import _ from 'lodash'
 
-class Projects extends Component {
+import { Link } from 'react-router'
+
+class ProjectsList extends Component {
   render() {
     const { projects, requestProjects } = this.props
-    let gg = []
-    _.forEach(projects, (value, key) => {
-      const ff = () => <div>ja</div>
-      gg = <ff />
+    const projectsArr = _.values(projects)
+    const projectsNodes = projectsArr.map(project => {
+      return <div key={project.slug}><Link to={`/projects/${project.slug}`}>{project.name}</Link></div>
     })
-    const pp = JSON.stringify(projects)
     return (
       <div>
-        Projects baby {gg}
+        Projects baby {projectsNodes}
         <button onClick={() => requestProjects()}>Request Projects</button>
       </div>
     )
@@ -33,4 +33,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Projects)
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectsList)
