@@ -1,9 +1,4 @@
-const initialProjects = {
-  nni: {
-    name: 'nni',
-    owner: 'nik n'
-  }
-}
+  const initialProjects = {}
 
 export default function projects(state = initialProjects, action) {
   switch (action.type) {
