@@ -34,11 +34,20 @@ class ProjectSingle extends Component {
   }
 }
 
-function mapStateToProps(state, ownProps) {
-  const { projectSlug } = ownProps.params
-  return {
-    project: state.projects[projectSlug]
+function makeMapStateToProps(initialState, initialOwnProps) {
+  const { projectSlug } = initialOwnProps.params
+  return function mapStateToProps(state) {
+    return {
+      project: state.projects[projectSlug]
+    }
   }
 }
 
-export default connect(mapStateToProps)(ProjectSingle)
+// function mapStateToProps(state, ownProps) {
+//   const { projectSlug } = ownProps.params
+//   return {
+//     project: state.projects[projectSlug]
+//   }
+// }
+
+export default connect(makeMapStateToProps)(ProjectSingle)
