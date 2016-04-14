@@ -1,8 +1,9 @@
 import { takeEvery } from 'redux-saga'
 import { put, call } from 'redux-saga/effects'
 
-import { firebaseOnce } from '../../services/firebase'
-import { getProjectList, getProjectEntry } from '../../services/contentful'
+import { firebaseOnce, getProjectList, getProjectEntry, insertProjectFirebase } from '../../services/firebase'
+// import { getProjectList, getProjectEntry } from '../../services/contentful'
+
 
 export function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms))
@@ -13,6 +14,11 @@ export function delay(ms) {
 //   yield put({type: 'INCREMENT_COUNTER'})
 // }
 
+function* insertProject(action) {
+  const {project} = action
+  yield call(insertProjectFirebase, project)
+  console.log(action)
+}
 
 
 export function* loadProjects() {
@@ -21,5 +27,6 @@ export function* loadProjects() {
 }
 
 export default function* rootSaga() {
-  yield* takeEvery('REQUEST_PROJECTS', loadProjects)
+  // yield* takeEvery('REQUEST_PROJECTS', loadProjects)
+  yield* takeEvery('INSERT_PROJECT', insertProject)
 }

@@ -19,6 +19,7 @@ import { syncHistoryWithStore } from 'react-router-redux'
 
 import ProjectsList from './redux/project/containerList'
 import ProjectSingle from './redux/project/containerSingle'
+import ProjectForm from './redux/project/containerForm'
 import Counter from './redux/counter/container'
 
 const history = syncHistoryWithStore(browserHistory, store)
@@ -29,6 +30,7 @@ const Root = () => (
       <Router history={history}>
         <Route path="/" component={Counter} />
         <Route path="/projects" component={ProjectsList}/>
+        <Route path="/projects/new" component={ProjectForm}/>
         <Route path="/projects/:projectSlug" component={ProjectSingle}/>
       </Router>
     </Provider>

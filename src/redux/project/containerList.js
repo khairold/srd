@@ -16,6 +16,8 @@ class ProjectsList extends Component {
     })
     return (
       <div>
+      <Link to={`/projects/new`}>Add New Project</Link>
+      <br />
         Projects baby {projectsNodes}
         <button onClick={() => requestProjects()}>Request Projects</button>
       </div>

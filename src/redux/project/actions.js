@@ -10,3 +10,10 @@ export function loadProjects(projects) {
     projects
   }
 }
+
+export function insertProject(project) {
+  return {
+    type: 'INSERT_PROJECT',
+    project
+  }
+}
