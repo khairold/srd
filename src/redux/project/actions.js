@@ -17,3 +17,11 @@ export function insertProject(project) {
     project
   }
 }
+
+export function zandleSubmit() {
+  const { project } = store.getState().form
+  return {
+    type: 'INSERT_PROJECT',
+    project
+  }
+}

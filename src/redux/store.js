@@ -4,9 +4,10 @@ import { routerReducer } from 'react-router-redux'
 
 import counter from './counter/reducer'
 import projects from './project/reducer'
+import {reducer as formReducer} from 'redux-form'
 
 const reducers = combineReducers({
-  counter, projects, routing: routerReducer
+  counter, projects, routing: routerReducer, form: formReducer
 })
 
 /* Start Store */
