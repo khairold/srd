@@ -18,10 +18,10 @@ class ProjectForm extends Component {
       }
     }
 
-    const {fields: {name, slug, description}, zandleSubmit} = this.props;
+    const {fields: {name, slug, description}, handleSubmit, onSubmit} = this.props;
 
     return (
-      <form>
+      <form onSubmit={handleSubmit}>
       <div>
       <Link to={`/projects`}>Project List</Link>
       <br />
@@ -34,7 +34,7 @@ class ProjectForm extends Component {
       <input type="text" placeholder="Name" {...name}/>
       <input type="text" placeholder="Slug" {...slug}/>
       <input type="text" placeholder="Description" {...description}/>
-      <button onClick={() => zandleSubmit()}>Save Form</button>
+      <button type="submit">Save Form</button>
       </form>
     )
   }

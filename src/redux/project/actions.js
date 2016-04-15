@@ -18,8 +18,10 @@ export function insertProject(project) {
   }
 }
 
-export function zandleSubmit() {
-  const { project } = store.getState().form
+export function onSubmit(projectFormValues) {
+  const project = {
+    tata: projectFormValues
+  }
   return {
     type: 'INSERT_PROJECT',
     project
