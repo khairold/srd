@@ -13,7 +13,7 @@ class ProjectForm extends Component {
     let project = {
       mama: {
         name: 'Mama',
-        slug: 'mama-mia',
+        slug: 'mama',
       }
     }
 
