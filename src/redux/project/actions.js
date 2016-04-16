@@ -11,16 +11,9 @@ export function loadProjects(projects) {
   }
 }
 
-export function insertProject(project) {
-  return {
-    type: 'INSERT_PROJECT',
-    project
-  }
-}
-
 export function onSubmit(projectFormValues) {
   const project = {
-    tata: projectFormValues
+    [projectFormValues.slug]: projectFormValues
   }
   return {
     type: 'INSERT_PROJECT',

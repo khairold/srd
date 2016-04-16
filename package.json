@@ -38,6 +38,7 @@
     "react-router-redux": "^4.0.2",
     "redux": "^3.4.0",
     "redux-form": "^5.0.1",
-    "redux-saga": "^0.9.5"
+    "redux-saga": "^0.9.5",
+    "slug": "^0.9.1"
   }
 }

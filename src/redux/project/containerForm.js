@@ -3,46 +3,21 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as ProjectActions from './actions'
 
-import _ from 'lodash'
-
-import { Link } from 'react-router'
 import { reduxForm } from 'redux-form'
+
+import ProjectFormComponent from '../../components/project/ProjectForm'
 
 class ProjectForm extends Component {
   render() {
-    const { insertProject } = this.props
-    let project = {
-      mama: {
-        name: 'Mama',
-        slug: 'mama',
-      }
-    }
-
-    const {fields: {name, slug, description}, handleSubmit, onSubmit} = this.props;
-
     return (
-      <form onSubmit={handleSubmit}>
-      <div>
-      <Link to={`/projects`}>Project List</Link>
-      <br />
-        Insert Project
-        <div>
-
-        </div>
-        <button onClick={() => insertProject(project)}>Save</button>
-      </div>
-      <input type="text" placeholder="Name" {...name}/>
-      <input type="text" placeholder="Slug" {...slug}/>
-      <input type="text" placeholder="Description" {...description}/>
-      <button type="submit">Save Form</button>
-      </form>
+      <ProjectFormComponent {...this.props} />
     )
   }
 }
 
-ProjectForm = reduxForm({ // <----- THIS IS THE IMPORTANT PART!
-  form: 'project',                           // a unique name for this form
-  fields: ['name','slug','description'] // all the fields in your form
+ProjectForm = reduxForm({
+  form: 'project',
+  fields: ['name','slug','description']
 })(ProjectForm)
 
 function mapDispatchToProps(dispatch) {
@@ -54,5 +29,4 @@ function mapStateToProps(state) {
     projects: state.projects
   }
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectForm)
