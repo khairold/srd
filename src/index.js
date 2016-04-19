@@ -24,6 +24,9 @@ import Counter from './redux/counter/container'
 
 const history = syncHistoryWithStore(browserHistory, store)
 
+import injectTapEventPlugin from 'react-tap-event-plugin'
+injectTapEventPlugin()
+
 const Root = () => (
   <div>
     <Provider store={store} >

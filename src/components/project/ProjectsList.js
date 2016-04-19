@@ -4,15 +4,18 @@ import { Link } from 'react-router'
 
 import _ from 'lodash'
 
+import RaisedButton from 'material-ui/lib/raised-button'
+
 class ProjectsList extends Component {
   render() {
     const { projects, requestProjects } = this.props
     const projectsArr = _.values(projects)
     const projectsNodes = projectsArr.map(project => {
-      return <div key={project.slug}><Link to={`/projects/${project.slug}`}>{project.name}</Link></div>
+      return <div key={project.slug}><Link to={`/projects/${project.slug}`} >{project.name}</Link></div>
     })
     return (
       <div>
+<RaisedButton label="Default" />
         <NavBar />
         <h1>Projects List</h1>
         {projectsNodes}
@@ -23,5 +26,6 @@ class ProjectsList extends Component {
     )
   }
 }
+
 
 export default ProjectsList
