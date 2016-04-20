@@ -17,7 +17,8 @@ class ProjectForm extends Component {
           <div>
             <label>Project Name</label>
             <div>
-              <input type="text" placeholder="Name" {...name}/>
+              
+              <h1 contentEditable="true" {...name}></h1>
             </div>
           </div>
 
