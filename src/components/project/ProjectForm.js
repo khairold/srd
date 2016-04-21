@@ -2,10 +2,21 @@ import React, { Component } from 'react'
 import Slug from 'slug'
 
 import NavBar from '../nav/NavBar'
+import UnicornEditor from '../util/UnicornEditor'
+import RichEditorExample from '../util/RichEditorExample'
+import PlainEditor from '../util/PlainEditor'
 
 class ProjectForm extends Component {
   render() {
     const {fields: {name, slug, description}, handleSubmit, onSubmit} = this.props;
+    const emptyProject = {
+      project: {
+        name: null,
+        slug: null,
+        description: null
+      }
+    }
+    const { project } = this.props.project ? this.props : emptyProject
 
     return (
       <div>
@@ -17,23 +28,21 @@ class ProjectForm extends Component {
           <div>
             <label>Project Name</label>
             <div>
-              
-              <h1 contentEditable="true" {...name}></h1>
+              <input type="text" placeholder="Project Name" {...name} value={project.name} />
+
             </div>
           </div>
 
           <div>
             <label>Slug</label>
             <div>
-              <input type="text" placeholder="Slug" {...slug}/>
+              <input type="text" placeholder="Slug" {...slug} value={project.slug} disabled={false} />
             </div>
           </div>
 
           <div>
             <label>Description</label>
-            <div>
-              <textarea {...description} value={description.value || ''} />
-            </div>
+            <PlainEditor {...description} value={project.description} />
           </div>
 
           <div>

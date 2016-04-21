@@ -17,10 +17,11 @@ store.dispatch(requestProjects())
 import { Router, Route, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 
-import Container from './components/util/Container'
+import Main from './components/skeleton/Main'
 import ProjectsList from './redux/project/containerList'
 import ProjectSingle from './redux/project/containerSingle'
 import ProjectForm from './redux/project/containerForm'
+import ProjectFormEdit from './redux/project/containerFormEdit'
 import Counter from './redux/counter/container'
 
 const history = syncHistoryWithStore(browserHistory, store)
@@ -32,10 +33,11 @@ const Root = () => (
   <div>
     <Provider store={store} >
       <Router history={history}>
-        <Route path="/" component={Container} >
+        <Route path="/" component={Main} >
           <Route path="/projects" component={ProjectsList}/>
           <Route path="/projects/new" component={ProjectForm}/>
           <Route path="/projects/:projectSlug" component={ProjectSingle}/>
+          <Route path="/projects/:projectSlug/edit" component={ProjectFormEdit}/>
         </Route>
       </Router>
     </Provider>

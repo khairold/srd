@@ -30,8 +30,12 @@
   },
   "dependencies": {
     "contentful": "^3.3.5",
+    "draft-js": "^0.5.0",
+    "draft-js-editor": "^0.6.15",
+    "draft-js-plugins-editor": "^1.0.0",
     "fbjs": "^0.2.1",
     "firebase": "^2.4.2",
+    "immutable": "^3.8.1",
     "lodash": "^4.10.0",
     "marked": "^0.3.5",
     "material-ui": "^0.14.4",

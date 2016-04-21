@@ -9,7 +9,7 @@ class ProjectSingle extends Component {
   render() {
     const { project } = this.props
 
-    const ProjectName = project && project.name ? <h1 contentEditable="true">{project.name}</h1> : null
+    const ProjectName = project && project.name ? <h1>{project.name}</h1> : null
     const Description = project && project.description ? <Marked markedText={project.description} /> : null
     const Updates = project && project.updates ? <Marked markedText={project.updates} /> : null
 
@@ -18,7 +18,6 @@ class ProjectSingle extends Component {
         <NavBar />
         {ProjectName}
         <div>
-        <p contentEditable="true">This is an editable paragraph.</p>
           {Description}
           {Updates}
         </div>
